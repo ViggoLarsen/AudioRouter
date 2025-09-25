@@ -1,0 +1,16 @@
+[package]
+name = "audio_router"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+cpal = { version = "0.15.3", features = ["asio"] }
+ringbuf = "0.3"
+anyhow = "1.0"
+log = { version = "0.4", features = ["std"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_yaml = "0.9"
+chrono = "0.4"
+windows-service = "0.7"
+winapi = { version = "0.3", features = ["winbase", "winerror"] }
+ctrlc = "3.4"

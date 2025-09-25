@@ -1,0 +1,72 @@
+# Audio Routing Configuration
+
+# Device definitions with type (input/output)
+devices:
+  line_in:
+    name: "Line In (Realtek(R) Audio)"
+    type: input
+    buffer_size: 8
+    primary_buffer: 960
+    gain: 1.0
+  line_out:
+    name: "Speakers (Realtek(R) Audio)"
+    type: output
+    buffer_size: 8
+    primary_buffer: 960
+    gain: 1.0
+  headset:
+    name: "Headphones (Chat-Audeze Maxwell)"
+    type: output
+    buffer_size: 8
+    primary_buffer: 960
+    gain: 1.0
+  mic:
+    name: "Microphone (Chat-Audeze Maxwell)"
+    type: input
+    buffer_size: 8
+    primary_buffer: 960
+    gain: 1.0
+
+# Routing configuration
+routing:
+  line_in_to_headset:
+    from: "line_in"
+    to: "headset"
+  mic_to_line_out:
+    from: "mic"
+    to: "line_out"
+
+# Audio settings
+audio:
+  # Pre-fill buffer with silence (samples)
+  prefill_samples: 4800
+
+  # Audio processing constants
+  # Keep-alive loop sleep duration (milliseconds)
+  keep_alive_sleep_ms: 100
+
+  # Ratio for mixing stereo to mono (0.5 = average both channels)
+  stereo_to_mono_mix_ratio: 0.5
+
+  # Audio sample clamp bounds
+  audio_sample_min: -1.0
+  audio_sample_max: 1.0
+
+# Logging settings
+logging:
+  # Log level: trace, debug, info, warn, error
+  level: info
+
+# Device wait settings (for service mode)
+device_wait:
+  # Enable waiting for devices to become available
+  enabled: true
+
+  # Maximum time to wait for devices (seconds)
+  max_wait_time: 60
+
+  # Time between device check attempts (seconds)
+  retry_interval: 2
+
+  # Continue even if some devices are not found
+  allow_partial: false
